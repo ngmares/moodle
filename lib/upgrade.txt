@@ -1,6 +1,10 @@
 This files describes API changes in core libraries and APIs,
 information provided here is intended especially for developers.
 
+* For performance reasons, sql_reader interface has a new function get_events_select_exists() which determines whether
+  an event exists with the given criteria (see MDL-72723 for details).
+   - Breaking: 3rd party log readers implementing interface sql_reader will need to implement get_events_select_exists()
+
 === 3.11.3 ===
 * The signature of the get_name() function for grade_category and grade_item has been extended. The new parameter allows
   callers to get the name without escaped characters.

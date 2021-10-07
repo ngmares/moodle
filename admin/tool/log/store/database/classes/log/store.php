@@ -263,6 +263,18 @@ class store implements \tool_log\log\writer, \core\log\sql_reader {
     }
 
     /**
+     * Get whether events are present for the given select clause.
+     *
+     * @param string $selectwhere select conditions.
+     * @param array $params params.
+     *
+     * @return bool Whether events available for the given conditions
+     */
+    public function get_events_select_exists($selectwhere, array $params) {
+      return $this->get_events_select_count($selectwhere, $params) > 0;
+    }
+
+    /**
      * Get a config value for the store.
      *
      * @param string $name Config name

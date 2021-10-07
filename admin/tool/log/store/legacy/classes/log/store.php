@@ -132,6 +132,18 @@ class store implements \tool_log\log\store, \core\log\sql_reader {
     }
 
     /**
+     * Get whether events are present for the given select clause.
+     *
+     * @param string $selectwhere select conditions.
+     * @param array $params params.
+     *
+     * @return bool Whether events available for the given conditions
+     */
+    public function get_events_select_exists($selectwhere, array $params) {
+      return $this->get_events_select_count($selectwhere, $params) > 0;
+    }
+
+    /**
      * Fetch records using given criteria returning a Traversable object.
      * @deprecated since Moodle 3.6 MDL-52953 - Please use supported log stores such as "standard" or "external" instead.
      * @todo MDL-52805 This will be removed in Moodle 3.10
